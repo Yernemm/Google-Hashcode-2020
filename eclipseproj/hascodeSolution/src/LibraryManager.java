@@ -56,6 +56,26 @@ public class LibraryManager {
 		return alllibs;
 	}
 	
+	public static Library[] mixedheuristic2() {
+		Library[] alllibs = Main.libs;
+		Arrays.sort(alllibs, new Comparator<Library>() {
+			public int compare(Library l1, Library l2) {
+				return Double.compare(l2.books.length * l2.scanrate * l2.scorePotential/(double)l2.signup, l1.books.length * l1.scanrate * l1.scorePotential/(double)l1.signup);
+			}
+		});
+		return alllibs;
+	}
+	
+	public static Library[] mixedheuristic3() {
+		Library[] alllibs = Main.libs;
+		Arrays.sort(alllibs, new Comparator<Library>() {
+			public int compare(Library l1, Library l2) {
+				return Double.compare(l2.scanrate / l2.books.length * l2.scorePotential/(double)l2.signup, l1.scanrate / l1.books.length * l1.scorePotential/(double)l1.signup);
+			}
+		});
+		return alllibs;
+	}
+	
 	
 	
 	public static Library[] heuristic() {

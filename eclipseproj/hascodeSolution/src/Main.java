@@ -92,7 +92,7 @@ public class Main {
 	public static int run(String fname) {
 		int randmax = 1000;
 		int randdiv = 1001;
-		Library[] libs = LibraryManager.heuristic2();
+		Library[] libs = LibraryManager.mixedheuristic3();
 		reset();
 		score = 0;
 		int ind = 0;
