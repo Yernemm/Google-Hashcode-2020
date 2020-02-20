@@ -73,7 +73,7 @@ public class Main {
 	public static int run() {
 		int randmax = 100;
 		int randdiv = 98;
-		Library[] libs = LibraryManager.bestScorePotential();
+		Library[] libs = LibraryManager.bestSetupTime();
 		reset();
 		score = 0;
 		int ind = 0;
