@@ -13,6 +13,7 @@ public class Main {
 	public static Library libs[];
 	public static Library setup;
 	public static ArrayList<Library> signedLibs = new ArrayList<Library>();
+	public static int score = 0;
 	public static void main(String[] args) {
 		
 		try {
@@ -33,7 +34,7 @@ public class Main {
 				for(int j = 0; j < nLibBooks; j++) {
 					libBooks[j] = sc.nextInt();
 				}
-				libs[i] = new Library(libBooks, setupTime, booksPerDay);
+				libs[i] = new Library(libBooks, setupTime, booksPerDay, i);
 			}
 			
 			int ind = 0;
@@ -41,13 +42,21 @@ public class Main {
 			
 			for(int d = 0; d < nDays; d++) {
 				for(Library l : signedLibs) {
-					l.tick();
+					score += l.tick();
 				}
 				if(setup.setup()) {
 					signedLibs.add(setup);
 					setup = libs[ind++];
 				}
 			}
+			
+			System.out.println(signedLibs.size());
+			for(Library l : libs) {
+				System.out.print(signedLibs.id + " ");
+			}
+			System.out.println();
+			
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
