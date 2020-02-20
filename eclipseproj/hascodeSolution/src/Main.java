@@ -21,8 +21,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		try {
-			//Scanner sc = new Scanner(new File("../../data/a_example.txt"));
-			Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
+			Scanner sc = new Scanner(new File("../../data/a_example.txt"));
+			//Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
 			//Scanner sc = new Scanner(new File("../../data/c_incunabula.txt"));
 			//Scanner sc = new Scanner(new File("../../data/d_tough_choices.txt"));
 			//Scanner sc = new Scanner(new File("../../data/e_so_many_books.txt"));
@@ -57,7 +57,7 @@ public class Main {
 				libs[i] = new Library(libBooks, setupTime, booksPerDay, i);
 			}
 			
-			for(int i = 0; i < 100000; i++) {
+			for(int i = 0; i < 1; i++) {
 				run();
 			}
 			
@@ -73,7 +73,7 @@ public class Main {
 	public static int run() {
 		int randmax = 1000;
 		int randdiv = 1001;
-		Library[] libs = LibraryManager.bestScorePotential();
+		Library[] libs = LibraryManager.heuristic();
 		reset();
 		score = 0;
 		int ind = 0;

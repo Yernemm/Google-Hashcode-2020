@@ -31,4 +31,14 @@ public class LibraryManager {
 		return alllibs;
 		
 	}
+	
+	public static Library[] heuristic() {
+		Library[] alllibs = Main.libs;
+		Arrays.sort(alllibs, new Comparator<Library>() {
+			public int compare(Library l1, Library l2) {
+				return Double.compare(l2.scorePotential/(double)l2.signup,  l1.scorePotential/(double)l1.signup);
+			}
+		});
+		return alllibs;
+	}
 }
