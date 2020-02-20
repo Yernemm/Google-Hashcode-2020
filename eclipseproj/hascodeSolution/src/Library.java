@@ -20,18 +20,23 @@ public class Library {
 		this.id = id;
 	}
 	
-	public ArrayList<Integer> tick()
+	/**
+	 * Run one day of book scanning. Ignore books already scanned.
+	 * @return Score from this day.
+	 */
+	public int tick()
 	{
+		int dayScore = 0;
 		if(!this.done) {
-			for (int i = 0; i < scanrate; i++) {
-				if(i + bookOn < books.length) {
-					scanned.add(books[i]);
-					
+			int scannedRun = 0;			
+
+			while(scannedRun < scanrate & bookOn < books.length) {
+				if(!Main.bookScanned[books[bookOn]]) {
+					Main.bookScanned[books[bookOn]] = true;
+					dayScore += Main.bookScores[books[bookOn]];
 				}
-				
+				bookOn++;
 			}
-			
-			bookOn += scanrate;
 			
 			if(bookOn >= books.length -1) {
 				done = true;
@@ -39,11 +44,7 @@ public class Library {
 			
 			
 		}
-
-		
-
-		
-		return scanned;
+		return dayScore;
 	}
 
 }
