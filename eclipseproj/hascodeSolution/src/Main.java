@@ -19,47 +19,33 @@ public class Main {
 	public static int maxScore = 0;
 	public static Random r = new Random();
 	public static void main(String[] args) {
-		
+
 		try {
-			Scanner sc = new Scanner(new File("../../data/a_example.txt"));
+			setup("../../data/a_example.txt");
+			run("a_example.txt");
+			maxScore = 0;
+			setup("../../data/b_read_on.txt");
+			run("b_read_on.txt");
+			maxScore = 0;
+			setup("../../data/c_incunabula.txt");
+			run("c_incunabula.txt.txt");
+			maxScore = 0;
+			setup("../../data/d_tough_choices.txt");
+			run("d_tough_choices.txt");
+			maxScore = 0;
+			setup("../../data/e_so_many_books.txt");
+			run("e_so_many_books.txt");
+			maxScore = 0;
+			setup("../../data/f_libraries_of_the_world.txt");
+			run("f_libraries_of_the_world.txt");
+			maxScore = 0;
 			//Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
 			//Scanner sc = new Scanner(new File("../../data/c_incunabula.txt"));
 			//Scanner sc = new Scanner(new File("../../data/d_tough_choices.txt"));
 			//Scanner sc = new Scanner(new File("../../data/e_so_many_books.txt"));
 			//Scanner sc = new Scanner(new File("../../data/f_libraries_of_the_world.txt"));
-			nBooks = sc.nextInt();
-			nLibs = sc.nextInt();
-			nDays = sc.nextInt();
-			bookScores = new int[nBooks];
-			bookScanned = new boolean[nBooks];
-			for(int i = 0; i < nBooks; i++) {
-				bookScores[i] = sc.nextInt();
-				bookScanned[i] = false;
-			}
-			libs = new Library[nLibs];
-			for(int i = 0; i < nLibs; i++) {
-				int nLibBooks = sc.nextInt();
-				int setupTime = sc.nextInt();
-				int booksPerDay = sc.nextInt();
-				int libBooks[] = new int[nLibBooks];
-				for(int j = 0; j < nLibBooks; j++) {
-					libBooks[j] = sc.nextInt();
-				}
-				for(int j = 0; j < nLibBooks; j++) {
-					for(int k = 1; k < nLibBooks-j; k++) {
-						if(bookScores[libBooks[k-1]] < bookScores[libBooks[k]]) {
-							int t = libBooks[k-1];
-							libBooks[k-1] = libBooks[k];
-							libBooks[k] = t;
-						}
-					}
-				}
-				libs[i] = new Library(libBooks, setupTime, booksPerDay, i);
-			}
 			
-			for(int i = 0; i < 1; i++) {
-				run();
-			}
+			
 			
 			
 			
@@ -70,10 +56,43 @@ public class Main {
 		
 	}
 	
-	public static int run() {
+	public static void setup(String file) throws FileNotFoundException {
+		Scanner sc = new Scanner(new File(file));
+		nBooks = sc.nextInt();
+		nLibs = sc.nextInt();
+		nDays = sc.nextInt();
+		bookScores = new int[nBooks];
+		bookScanned = new boolean[nBooks];
+		for(int i = 0; i < nBooks; i++) {
+			bookScores[i] = sc.nextInt();
+			bookScanned[i] = false;
+		}
+		libs = new Library[nLibs];
+		for(int i = 0; i < nLibs; i++) {
+			int nLibBooks = sc.nextInt();
+			int setupTime = sc.nextInt();
+			int booksPerDay = sc.nextInt();
+			int libBooks[] = new int[nLibBooks];
+			for(int j = 0; j < nLibBooks; j++) {
+				libBooks[j] = sc.nextInt();
+			}
+			for(int j = 0; j < nLibBooks; j++) {
+				for(int k = 1; k < nLibBooks-j; k++) {
+					if(bookScores[libBooks[k-1]] < bookScores[libBooks[k]]) {
+						int t = libBooks[k-1];
+						libBooks[k-1] = libBooks[k];
+						libBooks[k] = t;
+					}
+				}
+			}
+			libs[i] = new Library(libBooks, setupTime, booksPerDay, i);
+		}
+	}
+	
+	public static int run(String fname) {
 		int randmax = 1000;
 		int randdiv = 1001;
-		Library[] libs = LibraryManager.heuristic();
+		Library[] libs = LibraryManager.heuristic2();
 		reset();
 		score = 0;
 		int ind = 0;
@@ -99,7 +118,7 @@ public class Main {
 		if(maxScore < score) {
 			maxScore = score;
 			try {
-				PrintStream ps = new PrintStream(new File("sube.txt"));
+				PrintStream ps = new PrintStream(new File(fname));
 				int n = 0;
 				for(Library l : signedLibs) {
 					if(l.scanned.size()>0) {
