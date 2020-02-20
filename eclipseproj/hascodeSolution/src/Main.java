@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +18,12 @@ public class Main {
 	public static void main(String[] args) {
 		
 		try {
-			Scanner sc = new Scanner(new File("../../data/a_example.txt"));
+			//Scanner sc = new Scanner(new File("../../data/a_example.txt"));
+			//Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
+			//Scanner sc = new Scanner(new File("../../data/c_incunabula.txt"));
+			//Scanner sc = new Scanner(new File("../../data/d_tough_choices.txt"));
+			Scanner sc = new Scanner(new File("../../data/e_so_many_books.txt"));
+			//Scanner sc = new Scanner(new File("../../data/f_libraries_of_the_world.txt"));
 			nBooks = sc.nextInt();
 			nLibs = sc.nextInt();
 			nDays = sc.nextInt();
@@ -58,14 +64,22 @@ public class Main {
 			}
 			
 			
-			
-			System.out.println(signedLibs.size());
-			for(Library l : libs) {
-				System.out.println(l.id + " " + l.scanned.size());
-				for(int i : l.scanned) {
-					System.out.print(i + " ");
+			PrintStream ps = new PrintStream(new File("sube.txt"));
+			int n = 0;
+			for(Library l : signedLibs) {
+				if(l.scanned.size()>0) {
+					n++;
 				}
-				System.out.println();
+			}
+			ps.println(n);
+			for(Library l : signedLibs) {
+				if(l.scanned.size()>0) {
+					ps.println(l.id + " " + l.scanned.size());
+					for(int i : l.scanned) {
+						ps.print(i + " ");
+					}
+					ps.println();
+				}
 			}
 			
 			
