@@ -20,4 +20,15 @@ public class LibraryManager {
 		});
 		return alllibs;
 	}
+	
+	public static Library[] bestSetupTime() {
+		Library[] alllibs = Main.libs;
+		Arrays.sort(alllibs, new Comparator<Library>() {
+			public int compare(Library l1, Library l2) {
+				return Integer.compare(l1.signup, l2.signup);
+			}
+		});
+		return alllibs;
+		
+	}
 }
