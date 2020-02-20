@@ -7,8 +7,9 @@ public class Library {
 	public ArrayList<Integer> scanned;
 	private int bookOn;
 	public boolean done;
+	public int id;
 	
-	public Library(int[] books, int signup, int scanrate)
+	public Library(int[] books, int signup, int scanrate, int id)
 	{
 		this.books = books;
 		this.signup = signup;
@@ -16,6 +17,7 @@ public class Library {
 		this.scanned = new ArrayList<Integer>();
 		bookOn = 0;
 		done = false;
+		this.id = id;
 	}
 	
 	public ArrayList<Integer> tick()
