@@ -22,8 +22,10 @@ public class Main {
 			nLibs = sc.nextInt();
 			nDays = sc.nextInt();
 			bookScores = new int[nBooks];
+			bookScanned = new boolean[nBooks];
 			for(int i = 0; i < nBooks; i++) {
 				bookScores[i] = sc.nextInt();
+				bookScanned[i] = false;
 			}
 			libs = new Library[nLibs];
 			for(int i = 0; i < nLibs; i++) {
@@ -39,14 +41,19 @@ public class Main {
 			
 			int ind = 0;
 			setup = libs[ind++];
-			
+			boolean allset = false;
 			for(int d = 0; d < nDays; d++) {
 				for(Library l : signedLibs) {
 					score += l.tick();
 				}
-				if(setup.setup()) {
+				if(!allset && setup.setup()) {
 					signedLibs.add(setup);
-					setup = libs[ind++];
+					if(ind < libs.length) {
+						setup = libs[ind++];
+					}
+					else {
+						allset = true;
+					}
 				}
 			}
 			
@@ -69,6 +76,11 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+	}
+	public static void reset() {
+		for(Library l : libs) {
+			l.reset();
+		}
 	}
 
 }

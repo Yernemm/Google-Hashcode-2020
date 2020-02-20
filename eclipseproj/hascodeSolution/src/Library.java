@@ -5,7 +5,7 @@ public class Library {
 	public int signup;
 	public int scanrate;
 	
-	public ArrayList<Integer> scanned;
+	public ArrayList<Integer> scanned = new ArrayList<Integer>();
 	private int bookOn;
 	public boolean done;
 	public int id;
@@ -35,6 +35,7 @@ public class Library {
 				if(!Main.bookScanned[books[bookOn]]) {
 					Main.bookScanned[books[bookOn]] = true;
 					dayScore += Main.bookScores[books[bookOn]];
+					scanned.add(books[bookOn]);
 				}
 				bookOn++;
 			}
