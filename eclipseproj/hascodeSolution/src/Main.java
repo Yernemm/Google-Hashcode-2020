@@ -50,11 +50,17 @@ public class Main {
 				}
 			}
 			
+			
+			
 			System.out.println(signedLibs.size());
 			for(Library l : libs) {
-				System.out.print(signedLibs.id + " ");
+				System.out.println(l.id + " " + l.scanned.size());
+				for(int i : l.scanned) {
+					System.out.print(i + " ");
+				}
+				System.out.println();
 			}
-			System.out.println();
+			
 			
 			
 			
