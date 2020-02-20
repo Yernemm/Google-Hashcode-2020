@@ -4,6 +4,7 @@ public class Library {
 	public int[] books;
 	public int signup;
 	public int scanrate;
+	public int scorePotential;
 	
 	public ArrayList<Integer> scanned = new ArrayList<Integer>();
 	private int bookOn;
@@ -17,6 +18,10 @@ public class Library {
 		this.signup = signup;
 		this.scanrate = scanrate;
 		this.id = id;
+		
+		for(int bookId : this.books) {
+			this.scorePotential += Main.bookScores[bookId];
+		}
 		
 		reset();
 	}
