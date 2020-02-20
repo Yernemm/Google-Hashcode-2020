@@ -11,7 +11,8 @@ public class Main {
 	public static int bookScores[];
 	public static boolean bookScanned[];
 	public static Library libs[];
-	public static ArrayList<Library> sigedLibs = new ArrayList<Library>;
+	public static Library setup;
+	public static ArrayList<Library> signedLibs = new ArrayList<Library>();
 	public static void main(String[] args) {
 		
 		try {
@@ -35,6 +36,18 @@ public class Main {
 				libs[i] = new Library(libBooks, setupTime, booksPerDay);
 			}
 			
+			int ind = 0;
+			setup = libs[ind++];
+			
+			for(int d = 0; d < nDays; d++) {
+				for(Library l : signedLibs) {
+					l.tick();
+				}
+				if(setup.setup()) {
+					signedLibs.add(setup);
+					setup = libs[ind++];
+				}
+			}
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
