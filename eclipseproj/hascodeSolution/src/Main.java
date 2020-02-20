@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 
@@ -16,6 +17,7 @@ public class Main {
 	public static ArrayList<Library> signedLibs = new ArrayList<Library>();
 	public static int score = 0;
 	public static int maxScore = 0;
+	public static Random r = new Random();
 	public static void main(String[] args) {
 		
 		try {
@@ -55,8 +57,9 @@ public class Main {
 				libs[i] = new Library(libBooks, setupTime, booksPerDay, i);
 			}
 			
-			
-			run();
+			for(int i = 0; i < 10000; i++) {
+				run();
+			}
 			
 			
 			
@@ -68,10 +71,12 @@ public class Main {
 	}
 	
 	public static int run() {
-		score = 0;
+		int randmax = 100;
+		int randdiv = 98;
 		reset();
+		score = 0;
 		int ind = 0;
-		setup = libs[ind++];
+		setup = libs[ind];
 		boolean allset = false;
 		for(int d = 0; d < nDays; d++) {
 			for(Library l : signedLibs) {
@@ -80,7 +85,8 @@ public class Main {
 			if(!allset && setup.setup()) {
 				signedLibs.add(setup);
 				if(ind < libs.length) {
-					setup = libs[ind++];
+					ind += 1+r.nextInt(randmax)/randdiv;
+					setup = libs[ind];
 				}
 				else {
 					allset = true;
@@ -109,7 +115,7 @@ public class Main {
 						ps.println();
 					}
 				}
-				System.out.println("found new!!");
+				System.out.println("found new!! " + score);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
