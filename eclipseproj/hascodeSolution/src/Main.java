@@ -22,11 +22,11 @@ public class Main {
 		
 		try {
 			//Scanner sc = new Scanner(new File("../../data/a_example.txt"));
-			Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
+			//Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
 			//Scanner sc = new Scanner(new File("../../data/c_incunabula.txt"));
 			//Scanner sc = new Scanner(new File("../../data/d_tough_choices.txt"));
 			//Scanner sc = new Scanner(new File("../../data/e_so_many_books.txt"));
-			//Scanner sc = new Scanner(new File("../../data/f_libraries_of_the_world.txt"));
+			Scanner sc = new Scanner(new File("../../data/f_libraries_of_the_world.txt"));
 			nBooks = sc.nextInt();
 			nLibs = sc.nextInt();
 			nDays = sc.nextInt();
@@ -71,8 +71,13 @@ public class Main {
 	}
 	
 	public static int run() {
+<<<<<<< HEAD
 		int randmax = 100;
 		int randdiv = 98;
+=======
+		Library[] libs = LibraryManager.bestScorePotential();
+		score = 0;
+>>>>>>> 4117b8aadecd098a807881c6e70d65b3fb301bee
 		reset();
 		score = 0;
 		int ind = 0;

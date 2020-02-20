@@ -6,12 +6,12 @@ public class LibraryManager {
 		
 	}
 	
-	Integer[][] bruteForceOrders(int length) {
+	public static Integer[][] bruteForceOrders(int length) {
 		
 		return null; //to-do
 	}
 	
-	Library[] bestScorePotential() {
+	public static Library[] bestScorePotential() {
 		Library[] alllibs = Main.libs;
 		Arrays.sort(alllibs, new Comparator<Library>() {
 			public int compare(Library l1, Library l2) {
