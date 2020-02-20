@@ -32,6 +32,32 @@ public class LibraryManager {
 		
 	}
 	
+	public static Library[] addedheuristic() {
+		double scanrateMult = 1000;
+		double potentialMult = 0.5;
+		double signupMult = 500;
+		Library[] alllibs = Main.libs;
+		Arrays.sort(alllibs, new Comparator<Library>() {
+			public int compare(Library l1, Library l2) {
+				return Double.compare(l2.scanrate * scanrateMult + l2.scorePotential * potentialMult - (double)l2.signup * signupMult,
+						l1.scanrate * scanrateMult + l1.scorePotential * potentialMult - (double)l1.signup * signupMult);
+			}
+		});
+		return alllibs;
+	}
+	
+	public static Library[] mixedheuristic() {
+		Library[] alllibs = Main.libs;
+		Arrays.sort(alllibs, new Comparator<Library>() {
+			public int compare(Library l1, Library l2) {
+				return Double.compare(l2.scanrate * l2.scorePotential/(double)l2.signup, l1.scanrate * l1.scorePotential/(double)l1.signup);
+			}
+		});
+		return alllibs;
+	}
+	
+	
+	
 	public static Library[] heuristic() {
 		Library[] alllibs = Main.libs;
 		Arrays.sort(alllibs, new Comparator<Library>() {
