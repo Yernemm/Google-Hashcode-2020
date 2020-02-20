@@ -18,7 +18,7 @@ public class Library {
 		done = false;
 	}
 	
-	public int[] tick()
+	public ArrayList<Integer> tick()
 	{
 		if(!this.done) {
 			for (int i = 0; i < scanrate; i++) {
