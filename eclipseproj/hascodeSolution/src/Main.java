@@ -71,13 +71,9 @@ public class Main {
 	}
 	
 	public static int run() {
-<<<<<<< HEAD
 		int randmax = 100;
 		int randdiv = 98;
-=======
 		Library[] libs = LibraryManager.bestScorePotential();
-		score = 0;
->>>>>>> 4117b8aadecd098a807881c6e70d65b3fb301bee
 		reset();
 		score = 0;
 		int ind = 0;
