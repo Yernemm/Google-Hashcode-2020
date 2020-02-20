@@ -22,22 +22,34 @@ public class Main {
 
 		try {
 			setup("../../data/a_example.txt");
-			run("a_example.txt");
+			for(int i = 0; i < 100; i++) {
+				run("a_example.txt");
+			}
 			maxScore = 0;
 			setup("../../data/b_read_on.txt");
-			run("b_read_on.txt");
+			for(int i = 0; i < 100; i++) {
+				run("b_read_on.txt");
+			}
 			maxScore = 0;
 			setup("../../data/c_incunabula.txt");
+			for(int i = 0; i < 1; i++) {
 			run("c_incunabula.txt.txt");
+			}
 			maxScore = 0;
 			setup("../../data/d_tough_choices.txt");
-			run("d_tough_choices.txt");
+			for(int i = 0; i < 1; i++) {
+				run("d_tough_choices.txt");
+			}
 			maxScore = 0;
 			setup("../../data/e_so_many_books.txt");
-			run("e_so_many_books.txt");
+			for(int i = 0; i < 1; i++) {
+				run("e_so_many_books.txt");
+			}
 			maxScore = 0;
 			setup("../../data/f_libraries_of_the_world.txt");
-			run("f_libraries_of_the_world.txt");
+			for(int i = 0; i < 1; i++) {
+				run("f_libraries_of_the_world.txt");
+			}
 			maxScore = 0;
 			//Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
 			//Scanner sc = new Scanner(new File("../../data/c_incunabula.txt"));
@@ -92,7 +104,14 @@ public class Main {
 	public static int run(String fname) {
 		int randmax = 1000;
 		int randdiv = 1001;
-		Library[] libs = LibraryManager.mixedheuristic3();
+		Library[] libs = LibraryManager.heuristic2();
+		for(int i = 0; i < libs.length-1; i++) {
+			if(r.nextInt(60)==90) {
+				Library t = libs[i];
+				libs[i] = libs[i+1];
+				libs[i+1] = t;
+			}
+		}
 		reset();
 		score = 0;
 		int ind = 0;
