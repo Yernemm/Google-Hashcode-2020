@@ -32,22 +32,22 @@ public class Main {
 			}
 			maxScore = 0;
 			setup("../../data/c_incunabula.txt");
-			for(int i = 0; i < 100; i++) {
+			for(int i = 0; i < 1; i++) {
 			run("c_incunabula.txt.txt");
 			}
 			maxScore = 0;
 			setup("../../data/d_tough_choices.txt");
-			for(int i = 0; i < 100; i++) {
+			for(int i = 0; i < 1; i++) {
 				run("d_tough_choices.txt");
 			}
 			maxScore = 0;
 			setup("../../data/e_so_many_books.txt");
-			for(int i = 0; i < 100; i++) {
+			for(int i = 0; i < 1; i++) {
 				run("e_so_many_books.txt");
 			}
 			maxScore = 0;
 			setup("../../data/f_libraries_of_the_world.txt");
-			for(int i = 0; i < 100; i++) {
+			for(int i = 0; i < 1; i++) {
 				run("f_libraries_of_the_world.txt");
 			}
 			maxScore = 0;
@@ -104,9 +104,9 @@ public class Main {
 	public static int run(String fname) {
 		int randmax = 1000;
 		int randdiv = 1001;
-		Library[] libs = LibraryManager.heuristic();
+		Library[] libs = LibraryManager.heuristic2();
 		for(int i = 0; i < libs.length-1; i++) {
-			if(r.nextInt(60)==0) {
+			if(r.nextInt(60)==90) {
 				Library t = libs[i];
 				libs[i] = libs[i+1];
 				libs[i+1] = t;
