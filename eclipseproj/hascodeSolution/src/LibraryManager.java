@@ -46,7 +46,7 @@ public class LibraryManager {
 		Library[] alllibs = Main.libs;
 		Arrays.sort(alllibs, new Comparator<Library>() {
 			public int compare(Library l1, Library l2) {
-				return Double.compare(l2.scorePotential/(double)l2.signup/l2.signup,  l1.scorePotential/(double)l1.signup/l2.signup);
+				return Double.compare(l1.scanrate/l1.books.length,  l2.scanrate/l2.books.length);
 			}
 		});
 		return alllibs;
