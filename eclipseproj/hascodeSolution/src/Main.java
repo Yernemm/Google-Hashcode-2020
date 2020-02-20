@@ -22,11 +22,11 @@ public class Main {
 		
 		try {
 			//Scanner sc = new Scanner(new File("../../data/a_example.txt"));
-			//Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
+			Scanner sc = new Scanner(new File("../../data/b_read_on.txt"));
 			//Scanner sc = new Scanner(new File("../../data/c_incunabula.txt"));
 			//Scanner sc = new Scanner(new File("../../data/d_tough_choices.txt"));
 			//Scanner sc = new Scanner(new File("../../data/e_so_many_books.txt"));
-			Scanner sc = new Scanner(new File("../../data/f_libraries_of_the_world.txt"));
+			//Scanner sc = new Scanner(new File("../../data/f_libraries_of_the_world.txt"));
 			nBooks = sc.nextInt();
 			nLibs = sc.nextInt();
 			nDays = sc.nextInt();
@@ -57,7 +57,7 @@ public class Main {
 				libs[i] = new Library(libBooks, setupTime, booksPerDay, i);
 			}
 			
-			for(int i = 0; i < 10000; i++) {
+			for(int i = 0; i < 100000; i++) {
 				run();
 			}
 			
@@ -71,9 +71,9 @@ public class Main {
 	}
 	
 	public static int run() {
-		int randmax = 100;
-		int randdiv = 98;
-		Library[] libs = LibraryManager.bestSetupTime();
+		int randmax = 1000;
+		int randdiv = 1001;
+		Library[] libs = LibraryManager.bestScorePotential();
 		reset();
 		score = 0;
 		int ind = 0;
@@ -85,8 +85,8 @@ public class Main {
 			}
 			if(!allset && setup.setup()) {
 				signedLibs.add(setup);
+				ind += 1;//+r.nextInt(randmax)/randdiv;
 				if(ind < libs.length) {
-					ind += 1+r.nextInt(randmax)/randdiv;
 					setup = libs[ind];
 				}
 				else {
