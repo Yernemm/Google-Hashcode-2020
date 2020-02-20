@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -8,7 +9,9 @@ public class Main {
 	public static int nBooks;
 	public static int nLibs;
 	public static int bookScores[];
+	public static boolean bookScanned[];
 	public static Library libs[];
+	public static ArrayList<Library> sigedLibs = new ArrayList<Library>;
 	public static void main(String[] args) {
 		
 		try {
@@ -29,8 +32,9 @@ public class Main {
 				for(int j = 0; j < nLibBooks; j++) {
 					libBooks[j] = sc.nextInt();
 				}
-				libs[i] = Library(libBooks, setupTime, booksPerDay);
+				libs[i] = new Library(libBooks, setupTime, booksPerDay);
 			}
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
